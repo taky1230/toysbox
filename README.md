@@ -43,27 +43,3 @@ Things you may want to cover:
 
 ### Association
 - has_many :toys
-
-
-## groups テーブル
-
-|Column|Type|Options|
-|------|----|-------|
-|name|strig|index: true, null: false, unipue: true|
-
-### Association
-- has_many :users, through: :group_users
-- has_many :group_users
-- has_many :messages
-
-
-## groups_users テーブル
-
-|Column|Type|Options|
-|------|----|-------|
-|group|references|foreign_key: true, null: false|
-|user|references|foreign_key: true, null: false|
-
-### Association
-- belongs_to :group
-- belongs_to :user
