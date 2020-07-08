@@ -1,0 +1,28 @@
+h1 おもちゃの詳細
+
+.nav.justify-content-end
+  = link_to "おもちゃ箱にもどる", toys_path, class: "nav-link"
+table.table.table-hover
+  tbody
+    tr
+      th= Toy.human_attribute_name(:id)
+      td= @toy.id
+    tr
+      th= Toy.human_attribute_name(:name)
+      td= @toy.name
+    tr
+      th= Toy.human_attribute_name(:description)
+      td= auto_link(simple_format(h(@toy.description), {}, sanitize: false, wrapper_tag: "div"))
+    tr
+      th= Toy.human_attribute_name(:image)
+      td= image_tag @toy.image if @toy.image.attached?
+    tr
+      th= Toy.human_attribute_name(:created_at)
+      td= @toy.created_at
+    tr
+      th= Toy.human_attribute_name(:updated_at)
+      td= @toy.updated_at
+
+= link_to "編集", edit_toy_path, class: "btn btn-primary mr-3"
+= link_to "削除", @toy, method: :delete, data: { confirm: "おもちゃ『#{@toy.name}』をバイバイする？" }, class: "btn btn-outline-secondary"
+

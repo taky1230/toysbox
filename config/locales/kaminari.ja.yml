@@ -1,0 +1,17 @@
+ja:
+  views:
+    pagination:
+      first: "&laquo; はじめ"
+      last: "さいご &raquo;"
+      previous: "&lsaquo; 前"
+      next: "次 &rsaquo;"
+      truncate: "&hellip;"
+  helpers:
+    page_entries_info:
+      one_page:
+        display_entries:
+          zero: "%{entry_name}がないよ"
+          one: "１個の%{entry_name}があるよ"
+          other: "%{count}個の%{entry_name}が表示されているよ"
+      more_pages:
+        display_entries: "全%{total}個中 %{first}&nbsp;-&nbsp;%{last}個の%{entry_name}が表示されているよ"

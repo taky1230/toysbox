@@ -1,0 +1,39 @@
+h1 class="p-3 mb-2 bg-info text-white"おもちゃ箱
+
+= search_form_for @q, class: "mb-5" do |f|
+  .form-group.row
+    = f.label :name_cont, "なまえで探す", class: "col-sm-4 col-form-label"
+    .col-sm-10
+      = f.search_field :name_cont, class: "form-control"
+  .form-group
+    = f.submit class: "btn btn-outline-primary btn-sm"
+
+= link_to "入れる", new_toy_path, class: "btn btn-danger"
+
+.mb-4
+  = paginate @toys
+  = page_entries_info @toys, entry_name: "おもちゃ"
+
+table.table.table-hover
+  thead.thead-default
+    tr
+      / th= Toy.human_attribute_name(:name)
+      th= sort_link(@q, :name)
+      th= Toy.human_attribute_name(:created_at)
+      th
+    tbody
+      - @toys.each do |toy|
+        tr
+          td= link_to toy.name, toy
+          td= toy.created_at
+          td
+            = link_to "詳細", toy_path(toy), class: "btn btn-info mr-3"
+            = link_to "編集", edit_toy_path(toy), class: "btn btn-primary mr-3"
+            = link_to "削除", toy, method: :delete, data: { confirm: "おもちゃ『#{toy.name}』をバイバイする？" }, class: "btn btn-outline-secondary"
+          
+
+= link_to "export", toys_path(format: :csv), class: "btn btn-outline-success btn-sm"
+
+= form_tag import_toys_path, multipart: true, class: "mb-3" do
+  = file_field_tag :file_field_tag
+  = submit_tag "import", class: "btn btn-outline-warning btn-sm"
