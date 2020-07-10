@@ -49,6 +49,7 @@ test:
 #
 production:
   <<: *default
+  url: <%= ENV['DATABASE_URL'] %>
   database: toybox_production
   username: toybox
   password: <%= ENV['TOYBOX_DATABASE_PASSWORD'] %>
