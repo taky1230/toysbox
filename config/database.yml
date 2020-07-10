@@ -47,14 +47,14 @@ test:
 #   production:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
-# production:
-#   <<: *default
-#   database: toybox_production
-#   username: toybox
-#   password: <%= ENV['TOYBOX_DATABASE_PASSWORD'] %>
-
 production:
   <<: *default
-  adapter: postgresql
-  encoding: unicode
-  pool: 5
+  database: toybox_production
+  username: toybox
+  password: <%= ENV['TOYBOX_DATABASE_PASSWORD'] %>
+
+# production:
+#   <<: *default
+#   adapter: postgresql
+#   encoding: unicode
+#   pool: 5
